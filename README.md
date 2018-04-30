@@ -1,1 +1,2 @@
-# search-heading
+#### Search heading
+Simple component helper
