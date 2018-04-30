@@ -1,6 +1,6 @@
 <template>
 	<div class="demo-marengo">
-		<demo />
+		<demo :action="test"/>
 	</div>
 </template>
 <script>
@@ -8,6 +8,11 @@
 	export default {
 		components: {
 			Demo
+		},
+		methods: {
+			test(value) {
+				console.log(value)
+			}
 		}
 	}
 </script>

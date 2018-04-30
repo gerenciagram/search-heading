@@ -1,16 +1,16 @@
 <template>
 	<div class="search-heading d-flex align-items-center justify-content-between flex-nowrap"
 	:class="{'search-heading-loading': loading}">
-		<div class="w-100">
-			<input type="text" class="form-control search-heading-field" placeholder="Search...">
-		</div>
+		<form class="w-100">
+			<input v-model="input" type="text" class="form-control search-heading-field" :placeholder="`${$trans('search')}...`">
+		</form>
 		<div>
 			<div class="search-heading-button btn btn-primary d-flex flex-nowrap align-items-center position-relative">
 				<span class="search-heading-button-ordinary-content mr-2">
 					<i class="fas fa-search"></i>
 				</span>
 				<span class="search-heading-button-ordinary-content">
-					<span>Search</span>
+					<span>{{ $trans('search') }}</span>
 				</span>
 				<span class="search-heading-button-loading">
 					<loading :scale="58"/>
@@ -36,7 +36,24 @@
 			loading: {
 				default: false,
 				type: Boolean
+			},
+			action: {
+				default: el => console.log,
+				type: Function
 			}
+		},
+		computed: {
+			field() {
+				return this.$el.querySelector('form input')
+			}
+		},
+		data() {
+			return {
+				input: null
+			}
+		},
+		updated() {
+			this.action(this.field.value, this.field)
 		}
 	})
 </script>
