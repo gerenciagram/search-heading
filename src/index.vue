@@ -13,7 +13,7 @@
 					<span>Search</span>
 				</span>
 				<span class="search-heading-button-loading">
-					<loading scale="58"/>
+					<loading :scale="58"/>
 				</span>
 			</div>
 		</div>
