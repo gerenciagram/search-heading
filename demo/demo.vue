@@ -1,6 +1,6 @@
 <template>
 	<div class="demo-marengo">
-		<demo :action="test"/>
+		<demo :action="test" :submit="submit"/>
 	</div>
 </template>
 <script>
@@ -12,6 +12,9 @@
 		methods: {
 			test(value) {
 				console.log(value)
+			},
+			submit(e, value, ready) {
+				console.log(e, value)
 			}
 		}
 	}

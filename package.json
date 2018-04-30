@@ -1,6 +1,6 @@
 {
 	"name": "search-heading",
-	"version": "0.0.6",
+	"version": "0.0.7",
 	"main": "src/index.vue",
 	"dependencies": {
 		"bootstrap": "^4.1.0",

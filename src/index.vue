@@ -1,11 +1,11 @@
 <template>
 	<div class="search-heading d-flex align-items-center justify-content-between flex-nowrap"
 	:class="{'search-heading-loading': loading}">
-		<form class="w-100">
+		<form class="w-100" @submit="search">
 			<input v-model="input" type="text" class="form-control search-heading-field" :placeholder="`${$trans('search')}...`">
 		</form>
 		<div>
-			<div class="search-heading-button btn btn-primary d-flex flex-nowrap align-items-center position-relative">
+			<div class="search-heading-button btn btn-primary d-flex flex-nowrap align-items-center position-relative" @click="search">
 				<span class="search-heading-button-ordinary-content mr-2">
 					<i class="fas fa-search"></i>
 				</span>
@@ -33,11 +33,19 @@
 			Loading
 		},
 		props: {
+			waitLoad: {
+				default: true,
+				type: Boolean
+			},
 			loading: {
 				default: false,
 				type: Boolean
 			},
 			action: {
+				default: el => console.log,
+				type: Function
+			},
+			submit: {
 				default: el => console.log,
 				type: Function
 			}
@@ -50,6 +58,14 @@
 		data() {
 			return {
 				input: null
+			}
+		},
+		methods: {
+			search(e) {
+				e.preventDefault()
+				if (!this.loading || !this.waitLoad) {
+					this.submit(e, this.input)
+				}
 			}
 		},
 		updated() {
